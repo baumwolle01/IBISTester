@@ -35,7 +35,7 @@ class IBISComm:
                 except: continue
                 
     def translate(self, text):
-        """Übersetzt deutsche Umlaute in IBIS-Sonderzeichen."""
+        # Übersetzt deutsche Umlaute in IBIS-Sonderzeichen.
         res = ""
         for char in str(text):
             res += self.IBIS_MAP.get(char, char)
@@ -46,12 +46,13 @@ class IBISComm:
         # 1. Übersetzung und Formatierung
         clean_data = self.translate(data)
         actual_cmd = command[0] if command.startswith("aA") else command
-        
+       
+        # Hier werden die Datensätze "aufgefüllt" 
         if command == "l":      clean_data = str(clean_data).zfill(3)
         elif command == "lE":   clean_data = str(clean_data).zfill(2)
         elif command == "z":    clean_data = str(clean_data).zfill(3)
         elif command == "v" or command == "zI6": 
-            clean_data = f"{str(clean_data)[:24]:<24}"
+            clean_data = f"{str(clean_data)[:24]:<24}" # TODO: Fix für die 24 Zeichen begrenzung bauen
         elif command.startswith("aA"): 
             # Standard Zielanzeige (z.B. A11)
             prefix = "A11" if "A11" in command else "A21"
@@ -88,7 +89,7 @@ class IBISTesterApp:
         self.root.bind("<Escape>", lambda e: self.root.destroy())
         self.ibis = IBISComm(SERIAL_PORT)
         
-        # INIT Farben (Original-Look)
+        # INIT Oriented Farben (Original-Look)
         self.bg_blue = "#66CCCC"
         self.btn_tan = "#CCC990"
         self.btn_orange = "#FFA500"
@@ -119,15 +120,16 @@ class IBISTesterApp:
         grid_frame = tk.Frame(self.main_container, bg=self.bg_blue)
         grid_frame.pack(expand=True)
 
+        # Hier werden die Menüeinträge mit den Datensätzen angepasst/erweitert
         menu_items = [
             ("Linie (DS001)", "l", "num"), 
             ("Sonderz. (DS001a)", "lE", "num"), 
             ("Zielnr. (DS003)", "z", "num"),
-            ("Ziel ANZ1 (A11)", "aA11", "list_z"), 
-            ("Ziel ANZ2 (A21)", "aA21", "list_z"),
+            ("Ziel (DS021 ANZ1) (A11)", "aA11", "list_z"), 
+            ("Ziel (DS021 ANZ2) (A21)", "aA21", "list_z"),
             ("Ziel (DS003a)", "zA", "list_ziel"),            
-            ("Innen 009 (v)", "v", "list_i"),
-            ("Innen 003c (zI)", "zI6", "list_i"), 
+            ("Innen (DS009 (v))", "v", "list_i"),
+            ("Innen (DS003c (zI))", "zI6", "list_i"), #zI6 ist die 24 Zeichenbegrenzung
             ("", "", ""), 
             ("", "", "")
         ]
@@ -141,7 +143,7 @@ class IBISTesterApp:
             c += 1
             if c > 2: c = 0; r += 1
 
-        # Neustart-Button unten rechts
+        # Neustart-Button unten rechts, Startet das Gerät neu
         tk.Button(self.main_container, text="Sofort-\nNeustart", bg=self.btn_orange, font=("Arial", 16, "bold"),
                   width=12, height=3, command=self.restart_device).place(relx=0.9, rely=0.85, anchor="center")
         
@@ -213,7 +215,7 @@ class IBISTesterApp:
             sel = lb.curselection()[0]
             text = lb.get(sel)
             if sel == 0: # Datum/Uhrzeit Fall
-                text = datetime.now().strftime("%d.%m.%Y %H:%M:")
+                text = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
             self.ibis.send(cmd, text)
             self.show_main_menu()
         except: pass
