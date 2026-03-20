@@ -8,7 +8,7 @@ Da ich nicht alle testen kann, weil die entsprechenden Geräte vorhanden sind, k
 **TODO:**
 - [ ] Dynamische Datensätze (bspw 24/32/48 Zeichen bei Innenanzeige)
 - [ ] Button für letzen Datensatz senden hinzufügen
-- [ ] Button für Shutdown hinzufügen
+- [x] Button für Shutdown hinzufügen
 - [ ] Linienbandposition
 - [ ] Routennummer (DS003d)
 - [ ] Zielbandposition (DS003e)
