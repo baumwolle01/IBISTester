@@ -86,11 +86,9 @@ Für beides gibt es die möglichkeit die Passworteingabe zu "überspringen":
 
 sudo visudo
 
-pi ALL=(ALL) NOPASSWD: /usr/bin/python3 
-#Ermöglicht Autostart ohne Passworteingabe
+pi ALL=(ALL) NOPASSWD: /usr/bin/python3 (Ermöglicht Autostart ohne Passworteingabe)
 
-pi ALL=(ALL) NOPASSWD: /sbin/reboot 
-#Ermöglicht den Sofort Neustart ohne Passworteingabe
+pi ALL=(ALL) NOPASSWD: /sbin/reboot (Ermöglicht den Sofort Neustart ohne Passworteingabe)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
