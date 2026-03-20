@@ -5,6 +5,25 @@ DS001 (Linie), DS001a (Sonderzeichen), DS003 (Zielnummer), DS021 (Für Anzeigena
 Da ich nicht alle testen kann, weil die entsprechenden Geräte vorhanden sind, könnt ihr das gerne ausprobieren
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
+**TODO:**
+- [ ] Linienbandposition
+- [ ] Routennummer (DS003d)
+- [ ] Zielbandposition (DS003e)
+- [ ] HAG Datensatz
+- [ ] Innenanzeige (DS003cneu)
+- [ ] Innenanzeige (DS003cHneu)
+- [ ] LVA Datensatz (DS010/DS010b/DS021a)
+- [ ] Entwerter Datensatz
+- [ ] Ziel (DS003aMAS]
+- [ ] Ziel (DS003aMEIS)
+- [ ] Ziel (DS003aLW)
+- [ ] Ziel (DS021T)
+- [ ] Ziel (DS021neu)
+- [ ] Ziel (FMA-S1)
+- [ ] Ziel (GSP)
+- [ ] Ziel (PEEK_RET)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Installation (Linux, andere Systeme sind auch möglich):**
 1. System-Pakete aktualisieren & installieren
