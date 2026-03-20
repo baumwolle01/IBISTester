@@ -86,8 +86,8 @@ class IBISTesterApp:
     def __init__(self, root):
         self.root = root
         self.root.title("IBIS Tester")
-        self.root.attributes("-fullscreen", True)
-        self.root.bind("<Escape>", lambda e: self.root.destroy())
+        self.root.attributes("-fullscreen", True) # Setzt das Programm in den Vollbild-Modus
+        self.root.bind("<Escape>", lambda e: self.root.destroy()) # ESC beendet das Programm
         self.ibis = IBISComm(SERIAL_PORT)
         
         # INIT Oriented Farben (Original-Look)
