@@ -147,9 +147,17 @@ class IBISTesterApp:
         # Neustart-Button unten rechts, Startet das Gerät neu
         tk.Button(self.main_container, text="Sofort-\nNeustart", bg=self.btn_orange, font=("Arial", 16, "bold"),
                   width=12, height=3, command=self.restart_device).place(relx=0.9, rely=0.85, anchor="center")
-        
+
+        # Fährt das Gerät runter
+        tk.Button(self.main_container, text="Shutdown", bg=self.btn_orange, font=("Arial", 16, "bold"),
+                  width=12, height=3, command=self.shutdown_device).place(relx=0.7, rely=0.85, anchor="center")
+       
         tk.Label(self.main_container, text="IBIS-Tester\nAlpha v.0.0.1", font=("Arial", 16, "bold"),
                   width=12, height=3) .place(relx=0.9, rely=0.95, anchor="center")
+
+    def shutdown_device(self):
+        self.ibis.close()
+        os.system('sudo shutdown now')
 
     def restart_device(self):
         self.ibis.close()
