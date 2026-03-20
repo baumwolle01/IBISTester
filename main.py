@@ -6,11 +6,12 @@ from datetime import datetime
 import tkinter as tk
 
 # --- KONFIGURATION ---
-SERIAL_PORT = '/dev/ttyUSB0' 
+SERIAL_PORT = '/dev/ttyUSB0' #Hier an den entsprechenden Port anpassen
 BAUD_RATE = 1200
 
+# IBIS Umwandlungstabelle
 class IBISComm:
-    IBIS_MAP = {
+    IBIS_MAP = {    
         'ä': '{', 'ö': '|', 'ü': '}', 'ß': '~',
         'Ä': '[', 'Ö': '\\', 'Ü': ']', 'µ': '`'
     }
@@ -42,7 +43,7 @@ class IBISComm:
         return res
 
     def send(self, command, data):
-        """Bereitet Daten vor und sendet sie an den Bus."""
+        # Bereitet Daten vor und sendet sie an den Bus.
         # 1. Übersetzung und Formatierung
         clean_data = self.translate(data)
         actual_cmd = command[0] if command.startswith("aA") else command
