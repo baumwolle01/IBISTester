@@ -1,11 +1,12 @@
-Das ist mein IBIS Tester
+**Das ist mein IBIS Tester**
+
 Damit kann man Fahrzielanzeigen bzw. Innenanzeigen testen, aktuell eingebaut sind:
 DS001 (Linie), DS001a (Sonderzeichen), DS003 (Zielnummer), DS021 (Für Anzeigenadresse 1 und 2), DS003a (Zieltext), DS009 (Innenanzeige) und DS003c (Innenanzeige).
 Da ich nicht alle testen kann, weil die entsprechenden Geräte vorhanden sind, könnt ihr das gerne ausprobieren
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-Installation (Linux, andere Systeme sind auch möglich):
+**Installation (Linux, andere Systeme sind auch möglich):**
 1. System-Pakete aktualisieren & installieren
 Zuerst bringen wir den Pi auf den neuesten Stand und installieren die notwendigen System-Bibliotheken für Python und die grafische Oberfläche.
 
@@ -60,37 +61,45 @@ python3 main.py
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-Profi-Tipp: Automatischer Start beim Booten
-Da das Tool im Vollbildmodus läuft, möchtest du wahrscheinlich, dass es direkt nach dem Start des Pi/SBC erscheint.
-
-Erstelle eine Autostart-Datei:
-
-mkdir -p ~/.config/autostart
-nano ~/.config/autostart/ibis.desktop
-
-Füge diesen Inhalt ein (Pfade ggf. anpassen):
-
-[Desktop Entry]
-Type=Application
-Name=IBIS Control
-Exec=python3 /home/pi/ibis_project/main.py
-
-Speichern mit Strg+O, Enter und Beenden mit Strg+X.
+>[!TIP]
+>Profi-Tipp: Automatischer Start beim Booten
+>Da das Tool im Vollbildmodus läuft, möchtest du wahrscheinlich, dass es direkt nach dem Start des Pi/SBC erscheint.
+>
+>Erstelle eine Autostart-Datei:
+>
+>mkdir -p ~/.config/autostart
+>
+>nano ~/.config/autostart/ibis.desktop
+>
+>Füge diesen Inhalt ein (Pfade ggf. anpassen):
+>
+>[Desktop Entry]
+>Type=Application
+>Name=IBIS Control
+>Exec=python3 /home/pi/ibis_project/main.py<\br>
+>
+>Speichern mit Strg+O, Enter und Beenden mit Strg+X.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
-//WICHTIG:
-Es kann sein dass das Programm sich weigert den Port zu öffnen/nutzen, dazu einfach das programm mit sudo starten.
-Auch kann es sein dass der "Sofort Neustart" ein Passwort benötigt (wegen sudo reboot)
-Für beides gibt es die möglichkeit die Passworteingabe zu "überspringen":
+>[!IMPORTANT]
+>**//WICHTIG:**
+>Es kann sein dass das Programm sich weigert den Port zu öffnen/nutzen, dazu einfach das programm mit sudo starten.
+>Auch kann es sein dass der "Sofort Neustart" ein Passwort benötigt (wegen sudo reboot)
+>Für beides gibt es die möglichkeit die Passworteingabe zu "überspringen":
+>
+>sudo visudo
+>
+>pi ALL=(ALL) NOPASSWD: /usr/bin/python3 (Ermöglicht Autostart ohne Passworteingabe)
+>
+>pi ALL=(ALL) NOPASSWD: /sbin/reboot (Ermöglicht den Sofort Neustart ohne Passworteingabe)
+>
+--------------------------------------------------------------------------------------------------------------------------------------------------
+**Hier nochmal im richtigen Format:**
+<img width="794" height="372" alt="image" src="https://github.com/user-attachments/assets/1052e9a7-062f-45e2-9be5-7bc1c6c2dd50" />
 
-sudo visudo
-
-pi ALL=(ALL) NOPASSWD: /usr/bin/python3 (Ermöglicht Autostart ohne Passworteingabe)
-
-pi ALL=(ALL) NOPASSWD: /sbin/reboot (Ermöglicht den Sofort Neustart ohne Passworteingabe)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-Support:
+**Support:**
 Bei Fragen oder Datensatzvorschlägen (mit Beispielen) gerne ein Issue öffnen
