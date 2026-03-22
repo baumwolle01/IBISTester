@@ -70,7 +70,7 @@ class IBISComm:
         full_msg = checksum_payload.encode('ascii', errors='ignore') + bytes([checksum])
         
         # Debug-Ausgabe
-        display_output = checksum_payload.replace('\r', '<CR>')
+        self.display_output = checksum_payload.replace('\r', '<CR>')
         hex_checksum = hex(checksum).upper()[2:].zfill(2)
         
         if self.ser:
@@ -117,6 +117,9 @@ class IBISTesterApp:
         self.lbl_clock = tk.Label(top_bar, bg=self.header_yellow, font=("Courier", 30, "bold"))
         self.lbl_clock.pack(side='left', padx=20)
         self.update_clock()
+        # Zieht sich den gespeicherten Text direkt aus der Hardware-Klasse
+        self.last = tk.Label(top_bar, text=f"Last: {self.ibis.display_output}", bg=self.header_yellow, font=("Courier", 18, "bold"))
+        self.last.pack(side='right', padx=10)
 
         grid_frame = tk.Frame(self.main_container, bg=self.bg_blue)
         grid_frame.pack(expand=True)
